@@ -4,7 +4,7 @@
    ============================================================ */
 
 const CONTENT = {
-  roles: ["Game Developer", "Gameplay Programmer", "Web Developer", "Pixel Night Owl"],
+  roles: ["Game Developer", "Game Tester", "Web Developer"],
   heroText: "I build games and websites with code, pixels, and a lot of late nights.",
   bio: "I'm Lorinz, a game developer who loves building worlds in code, from first-person survival shooters in PlayCanvas to Roblox tools. I also build websites with HTML, CSS and JavaScript.",
 
@@ -13,30 +13,31 @@ const CONTENT = {
 
   // Leave a url empty ("") to hide that link.
   socials: [
-    { name: "GitHub", url: "" },
-    { name: "itch.io", url: "" },
-    { name: "LinkedIn", url: "" },
-    { name: "Roblox", url: "" }
+    { name: "GitHub", url: "https://github.com/taburalorinz66-beep" },
+    { name: "LinkedIn", url: "https://www.linkedin.com/in/tabura-lorinz-g-0a4811393/" },
+    { name: "Roblox", url: "https://www.roblox.com/users/4509562749/profile" },
+    {name: "FB", url: "https://www.facebook.com/lorinz.tabura.507"},
+    {name: "Instagram", url: "https://www.instagram.com/mjstc_penguin/"}
   ],
 
   ticker: ["GAME DEVELOPER", "WEB DEVELOPER", "PLAYCANVAS", "ROBLOX STUDIO", "UNITY", "JAVASCRIPT", "PIXEL ART", "OPEN FOR COLLABS"],
 
   terminal: [
     { cmd: "whoami", out: "lorinz-g-tabura" },
-    { cmd: "cat role.txt", out: "game developer + web developer" },
-    { cmd: "ls tools/", out: "playcanvas  roblox-studio  unity  javascript  html-css" },
+    { cmd: "role", out: "game developer + web developer" },
+    { cmd: "ls tools/", out: "playcanvas  roblox-studio  unity  javascript  html-css  Eclipse  Blender" },
     { cmd: "echo $STATUS", out: "leveling up... always." }
   ]
 };
 
 // level 0-100. Change names, levels and notes to match your real skills.
 const SKILLS = [
-  { name: "HTML / CSS", lvl: 85, color: "a3", note: "Layouts, animations, responsive design." },
-  { name: "JavaScript", lvl: 80, color: "a1", note: "Gameplay scripts, DOM, canvas." },
-  { name: "Game Design", lvl: 65, color: "a2", note: "Mechanics, loops and player feedback." },
-  { name: "PlayCanvas", lvl: 55, color: "a3", note: "3D web games: movement, enemies, UI." },
-  { name: "Unity / C#", lvl: 45, color: "a1", note: "Porting gameplay systems into C#." },
-  { name: "Roblox Studio", lvl: 40, color: "a2", note: "Tools, clothing and Lua scripting." },
+  { name: "HTML / CSS", lvl: 30, color: "a3", note: "Layouts, animations, responsive design." },
+  { name: "JavaScript", lvl:  40, color: "a1", note: "Gameplay scripts, DOM, canvas." },
+  { name: "Game Design", lvl: 80, color: "a2", note: "Mechanics, loops and player feedback." },
+  { name: "PlayCanvas", lvl: 70, color: "a3", note: "3D web games: movement, enemies, UI." },
+  { name: "Unity / C#", lvl: 30, color: "a1", note: "Porting gameplay systems into C#." },
+  { name: "Roblox Studio", lvl: 60, color: "a2", note: "Tools, clothing and Lua scripting." },
   { name: "Git / GitHub", lvl: 50, color: "a3", note: "Version control for every project." }
 ];
 
@@ -44,7 +45,7 @@ const SKILLS = [
 // admin panel are added after these. To change or add a built-in one, edit here.
 // category: "game" or "website"   url: "" = no link yet
 const FEATURED_PROJECTS = [
-  { id: "f1", category: "game", kind: "link", title: "My First Game", url: "https://playcanv.as/b/b0da0001", created_at: "2026-01-01",
+  { id: "f1", category: "game", kind: "link", title: "Shooting", url: "https://playcanv.as/b/b0da0001", created_at: "2026-01-01",
     description: "The very first game I ever made, built with PlayCanvas. Press PLAY to try it in your browser.",
     features: [] },
   { id: "f2", category: "website", kind: "link", title: "Portfolio", url: "", created_at: "2026-10-30",
