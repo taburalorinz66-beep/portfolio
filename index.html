@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="night">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lorinz G. Tabura | Game Developer</title>
+  <meta name="description" content="Portfolio of Lorinz G. Tabura: game developer and web developer." />
+  <meta name="theme-color" content="#0b0a1a" />
+  <script>document.documentElement.classList.add("js");</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/main.css" />
+</head>
+<body class="loading">
+  <a class="skip" href="#main">Skip to content</a>
+
+  <!-- Boot screen -->
+  <div id="loader" class="force-night" role="dialog" aria-label="Loading">
+    <div class="loader-inner">
+      <canvas id="loader-sprite" width="16" height="16" aria-hidden="true"></canvas>
+      <p class="loader-title">LORINZ.EXE</p>
+      <pre id="boot-log" class="boot-log" aria-live="polite"></pre>
+      <div class="load-bar"><div id="load-fill"></div></div>
+      <p id="load-pct" class="load-pct">0%</p>
+      <button id="start-btn" class="btn" type="button" hidden>PRESS START</button>
+    </div>
+  </div>
+
+  <div id="wipe" aria-hidden="true"></div>
+  <canvas id="fx" aria-hidden="true"></canvas>
+  <div id="cursor" aria-hidden="true"><div id="cursor-dot"></div><div id="cursor-ring"></div></div>
+  <div id="progress" aria-hidden="true"><span></span></div>
+
+  <header class="header" id="header">
+    <a href="#home" class="logo" data-nav>Portfolio</a>
+    <nav class="nav" id="nav" aria-label="Main">
+      <span class="nav-ind" id="nav-ind"></span>
+      <a href="#about" data-nav>About</a>
+      <a href="#skills" data-nav>Skills</a>
+      <a href="#projects" data-nav>Projects</a>
+      <a href="#arcade" data-nav>Arcade</a>
+      <a href="#contact" data-nav>Contact</a>
+    </nav>
+    <div class="header-actions">
+      <button id="btn-cmd" class="mini-btn" type="button" title="Command palette (Ctrl+K)">CMD</button>
+      <button id="btn-theme" class="mini-btn" type="button" title="Change theme">NIGHT</button>
+      <button id="btn-sound" class="mini-btn" type="button" title="Toggle sound effects" aria-pressed="false">SFX OFF</button>
+      <button id="menu-toggle" class="mini-btn menu-btn" type="button" aria-label="Toggle menu" aria-expanded="false">MENU</button>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- HERO -->
+    <section id="home" class="hero">
+      
+      <div class="hero-shade" aria-hidden="true"></div>
+      <div class="hero-content" id="hero-content">
+        <p class="hero-hi intro" style="--d:0">&gt; PLAYER 1 READY</p>
+        <h1 class="glitch intro" id="hero-name" data-text="LORINZ G. TABURA" style="--d:1">LORINZ G. TABURA</h1>
+        <h2 class="hero-role intro" style="--d:2">&gt; <span id="typing"></span><span class="cursor">_</span></h2>
+        <p class="hero-text intro" style="--d:3" id="hero-text"></p>
+        <div class="hero-buttons intro" style="--d:4">
+          <a href="#projects" class="btn" data-nav>View Projects</a>
+          <a href="#arcade" class="btn btn-outline" data-nav>Play Arcade</a>
+          <button class="btn btn-ghost" id="cv-btn" type="button">Download CV</button>
+        </div>
+        <div class="socials intro" id="hero-socials" style="--d:5"></div>
+      </div>
+      <a href="#about" class="scroll-hint" data-nav aria-label="Scroll down"><span>SCROLL</span><i></i></a>
+    </section>
+
+    <div class="ticker" aria-hidden="true"><div class="ticker-track" id="ticker"></div></div>
+
+    <!-- ABOUT -->
+    <section id="about" class="section">
+      <h2 class="section-title" data-scramble>About Me</h2>
+      <div class="about-grid">
+        <div class="avatar-wrap reveal" data-r="left">
+          <div class="avatar-frame">
+            <canvas id="avatar" width="16" height="16" aria-label="Pixel art avatar" role="img"></canvas>
+          </div>
+          <p class="avatar-tag">LV.99 DEV</p>
+        </div>
+        <div class="about-body">
+          <div class="panel terminal reveal" data-r="right">
+            <div class="term-bar"><i></i><i></i><i></i><span>lorinz@portfolio:~</span></div>
+            <pre id="terminal" class="term-out" aria-label="Terminal intro"></pre>
+          </div>
+          <p class="bio reveal" data-r="up" id="bio" style="--i:1"></p>
+          <div class="stats reveal" data-r="up" id="stats" style="--i:2"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="section">
+      <h2 class="section-title" data-scramble>Skills</h2>
+      <p class="lead reveal" data-r="up">Stats screen. Hover a bar to inspect it.</p>
+      <div class="skill-list" id="skill-list"></div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="section">
+      <h2 class="section-title" data-scramble>Projects</h2>
+      <div class="filters reveal" data-r="up" id="filters" role="tablist" aria-label="Filter projects">
+        <button class="filter active" data-filter="all" role="tab" aria-selected="true">ALL <b id="c-all">0</b></button>
+        <button class="filter" data-filter="game" role="tab" aria-selected="false">GAMES <b id="c-game">0</b></button>
+        <button class="filter" data-filter="website" role="tab" aria-selected="false">WEBSITES <b id="c-website">0</b></button>
+      </div>
+      <div class="cards" id="cards"></div>
+    </section>
+
+    <!-- ARCADE -->
+    <section id="arcade" class="section">
+      <h2 class="section-title" data-scramble>Arcade</h2>
+      <p class="lead reveal" data-r="up">Take a break. Catch the petals, dodge the bugs, beat the high score.</p>
+      <div class="cabinet reveal" data-r="zoom">
+        <div class="hud-bar">
+          <span>SCORE <b id="g-score">0</b></span>
+          <span>HI <b id="g-hi">0</b></span>
+          <span>COMBO <b id="g-combo">x1</b></span>
+          <span id="g-lives" class="lives" aria-label="Lives">♥♥♥</span>
+        </div>
+        <div class="screen">
+          <canvas id="game" width="320" height="180" tabindex="0" aria-label="Petal Catcher mini game"></canvas>
+          <div class="overlay" id="g-overlay">
+            <p id="g-title" class="g-title">PETAL CATCHER</p>
+            <p id="g-msg" class="g-msg">Catch <span class="c-pink">petals</span>, grab <span class="c-gold">stars</span>, avoid <span class="c-red">bugs</span>.</p>
+            <button id="g-start" class="btn" type="button">INSERT COIN</button>
+          </div>
+        </div>
+        <div class="pad">
+          <button id="g-left" class="pad-btn" type="button" aria-label="Move left">◀</button>
+          <button id="g-pause" class="pad-btn wide" type="button">PAUSE</button>
+          <button id="g-right" class="pad-btn" type="button" aria-label="Move right">▶</button>
+        </div>
+        <p class="hint">← → / A D / mouse / touch to move · P to pause · try the Konami code</p>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section">
+      <h2 class="section-title" data-scramble>Contact</h2>
+      <div class="contact-grid">
+        <form id="contact-form" class="form reveal" data-r="left" novalidate>
+          <p class="contact-text">Want to team up for a game jam or a project? Send a message.</p>
+          <label class="field">
+            <span>NAME</span>
+            <input type="text" id="name" name="name" autocomplete="name" required />
+            <small class="err" data-for="name"></small>
+          </label>
+          <label class="field">
+            <span>EMAIL</span>
+            <input type="email" id="email" name="email" autocomplete="email" required />
+            <small class="err" data-for="email"></small>
+          </label>
+          <label class="field">
+            <span>MESSAGE <em id="msg-count">0/500</em></span>
+            <textarea id="message" name="message" rows="5" maxlength="500" required></textarea>
+            <small class="err" data-for="message"></small>
+          </label>
+          <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" class="hp" aria-hidden="true" />
+          <button type="submit" class="btn" id="send-btn"><span>SEND MESSAGE</span></button>
+          <p id="form-status" class="form-status" role="status"></p>
+        </form>
+        <aside class="side reveal" data-r="right">
+          <div class="panel">
+            <h3>QUICK LINKS</h3>
+            <ul class="link-list" id="contact-links"></ul>
+          </div>
+          <div class="panel tip">
+            <h3>HINT</h3>
+            <p>Press <kbd>Ctrl</kbd>+<kbd>K</kbd> or <kbd>/</kbd> anywhere for the command palette.</p>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; <span id="year"></span> Lorinz G. Tabura. Thanks for playing.</p>
+    <button id="to-top" class="to-top" type="button" aria-label="Back to top">▲</button>
+  </footer>
+
+  <!-- Level HUD -->
+  <div class="hud-level" id="hud-level" aria-hidden="true">
+    <span>LV <b id="lv">1</b></span>
+    <span id="lv-name">HOME</span>
+    <div class="xp"><span id="xp"></span></div>
+  </div>
+
+  <!-- Project modal -->
+  <div id="modal" class="modal" hidden>
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="m-title">
+      <button class="modal-close" type="button" data-close aria-label="Close">X</button>
+      <div class="m-thumb"><canvas id="m-canvas" width="96" height="54"></canvas></div>
+      <div class="m-body">
+        <p class="m-kind" id="m-kind"></p>
+        <h3 id="m-title"></h3>
+        <div class="tags" id="m-tags"></div>
+        <p id="m-desc" class="m-desc"></p>
+        <ul id="m-list" class="m-list"></ul>
+        <div class="m-links" id="m-links"></div>
+      </div>
+      <div class="m-nav">
+        <button type="button" id="m-prev">◀ PREV</button>
+        <button type="button" id="m-next">NEXT ▶</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Command palette -->
+  <div id="palette" class="palette" hidden>
+    <div class="modal-backdrop" data-close></div>
+    <div class="pal-card" role="dialog" aria-modal="true" aria-label="Command palette">
+      <input id="pal-input" type="text" placeholder="Type a command... (go to, theme, play)" autocomplete="off" spellcheck="false" />
+      <ul id="pal-list" role="listbox"></ul>
+      <p class="pal-hint">↑ ↓ to move · Enter to run · Esc to close</p>
+    </div>
+  </div>
+
+  <div id="toasts" aria-live="polite"></div>
+
+  <noscript><p class="noscript">This portfolio needs JavaScript to run. Please enable it.</p></noscript>
+  <!-- Supabase library (talks to your free online database) -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.118.0/dist/umd/supabase.js"></script>
+
+  <!-- 1. Your settings and your text -->
+  <script src="js/config.js"></script>
+  <script src="js/content.js"></script>
+
+  <!-- 2. Core tools -->
+  <script src="js/core/helpers.js"></script>
+  <script src="js/core/state.js"></script>
+  <script src="js/core/sound.js"></script>
+  <script src="js/core/toast.js"></script>
+  <script src="js/core/dialog.js"></script>
+
+  <!-- 3. Backend (database + files + messages) -->
+  <script src="js/services/backend.js"></script>
+  <script src="js/services/auth.js"></script>
+  <script src="js/services/items.js"></script>
+  <script src="js/services/messages.js"></script>
+
+  <!-- 4. Pixel art and effects -->
+  <script src="js/visuals/avatar.js"></script>
+  <script src="js/visuals/palettes.js"></script>
+  <script src="js/visuals/pixel-city.js"></script>
+  <script src="js/visuals/city-thumb.js"></script>
+  <script src="js/visuals/thumb.js"></script>
+  <script src="js/visuals/particles.js"></script>
+  <script src="js/visuals/cursor.js"></script>
+
+  <!-- 5. Page behavior -->
+  <script src="js/ui/text-effects.js"></script>
+  <script src="js/ui/page-wipe.js"></script>
+  <script src="js/ui/navigation.js"></script>
+  <script src="js/ui/reveal.js"></script>
+  <script src="js/ui/theme.js"></script>
+  <script src="js/ui/command-palette.js"></script>
+  <script src="js/ui/admin-access.js"></script>
+  <script src="js/ui/global-feel.js"></script>
+
+  <!-- 6. One file per section -->
+  <script src="js/sections/hero.js"></script>
+  <script src="js/sections/about.js"></script>
+  <script src="js/sections/skills.js"></script>
+  <script src="js/sections/projects.js"></script>
+  <script src="js/sections/arcade.js"></script>
+  <script src="js/sections/contact.js"></script>
+  <script src="js/sections/boot.js"></script>
+
+  <!-- 7. Start everything (must be last) -->
+  <script src="js/main.js"></script>
+</body>
+</html>

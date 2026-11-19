@@ -1,0 +1,54 @@
+/* ============================================================
+   css/main.css  -  THE LIST OF ALL STYLE FILES
+   index.html loads only this one file. It loads the others, in order.
+   To add a new style file: create it, then add one @import line here.
+   (Order matters: later files can override earlier ones.)
+   ============================================================ */
+
+/* 1. Base: colors, reset, effects, animations */
+@import url("base/variables.css");
+@import url("base/reset.css");
+@import url("base/effects.css");
+@import url("base/animations.css");
+@import url("base/noscript.css");
+
+/* 2. Full-screen things: boot screen, page wipe */
+@import url("screens/loader.css");
+@import url("screens/page-wipe.css");
+
+/* 3. Canvas effects */
+@import url("effects/particles.css");
+@import url("effects/cursor.css");
+
+/* 4. Layout: the frame of the page */
+@import url("layout/progress-bar.css");
+@import url("layout/level-hud.css");
+@import url("layout/header.css");
+@import url("layout/hero.css");
+@import url("layout/ticker.css");
+@import url("layout/sections.css");
+@import url("layout/footer.css");
+
+/* 5. Components: reusable pieces */
+@import url("components/buttons.css");
+@import url("components/panels.css");
+@import url("components/tags.css");
+@import url("components/admin-fab.css");
+@import url("components/filters.css");
+@import url("components/forms.css");
+@import url("components/skip-link.css");
+@import url("components/toast.css");
+@import url("components/dialog.css");
+@import url("components/project-modal.css");
+@import url("components/command-palette.css");
+
+/* 6. One file per section of the page */
+@import url("sections/about.css");
+@import url("sections/skills.css");
+@import url("sections/projects.css");
+@import url("sections/arcade.css");
+@import url("sections/contact.css");
+
+/* 7. Last: phone layout and reduced motion */
+@import url("responsive.css");
+@import url("base/reduced-motion.css");

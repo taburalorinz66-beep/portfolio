@@ -1,0 +1,74 @@
+/* ============================================================
+   css/sections/projects.css
+   Project cards.
+   ============================================================ */
+
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 30px; perspective: 1200px; }
+
+.card {
+  --rx: 0deg; --ry: 0deg; --mx: 50%; --my: 50%;
+  position: relative;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  box-shadow: 0 8px 30px -12px rgba(0,0,0,.45);
+  padding: 16px;
+  display: flex; flex-direction: column;
+  transform: rotateX(var(--rx)) rotateY(var(--ry));
+  transform-style: preserve-3d;
+  transition: transform .15s ease-out, border-color .2s, box-shadow .2s, opacity .3s ease-out;
+  cursor: pointer;
+  animation: cardIn .6s ease-out both;
+  animation-delay: calc(var(--i, 0) * .08s);
+}
+
+.card[hidden] { display: none; }
+
+.card.leaving { animation: cardOut .28s ease-out forwards; }
+
+.card:hover { border-color: var(--a1); box-shadow: 0 12px 50px -20px var(--a2); }
+
+.card-glare {
+  position: absolute; inset: 0; pointer-events: none; opacity: 0;
+  background: radial-gradient(circle at var(--mx) var(--my), rgba(255,255,255,.22), transparent 55%);
+  transition: opacity .2s;
+}
+
+.card:hover .card-glare { opacity: 1; }
+
+.thumb { position: relative; height: 170px; margin-bottom: 16px; border: 1px solid var(--border); overflow: hidden; background: var(--field); transform: translateZ(24px); }
+
+.thumb canvas, .thumb img { width: 100%; height: 100%; object-fit: cover; image-rendering: pixelated; display: block; transition: transform .5s ease-out; }
+
+.card:hover .thumb canvas, .card:hover .thumb img { transform: scale(1.12); }
+
+.badge {
+  position: absolute; left: 8px; top: 8px;
+  font-family: var(--pixel); font-size: 0.877rem; padding: 6px 8px;
+  background: var(--panel); color: var(--a3); border: 1px solid var(--a3); letter-spacing: .04em; font-weight: 600;}
+
+.badge.web { color: var(--a1); border-color: var(--a1); }
+
+.card h3 { font-family: var(--pixel); font-size: 1.56rem; line-height: 1.4; margin-bottom: 12px; transform: translateZ(16px); letter-spacing: .04em; font-weight: 600;}
+
+.card p { color: var(--muted); margin-bottom: 16px; flex: 1; }
+
+.more { font-family: var(--pixel); font-size: 1.07rem; color: var(--a1); transition: transform .15s ease-out; letter-spacing: .04em; font-weight: 600;}
+
+.card:hover .more { transform: translateX(8px); }
+
+.card.locked { cursor: not-allowed; border-style: dashed; }
+
+.card.locked .thumb { display: grid; place-items: center; font-family: var(--pixel); font-size: 3.12rem; color: var(--border); background: repeating-linear-gradient(45deg, var(--panel) 0 12px, var(--field) 12px 24px); letter-spacing: .04em; font-weight: 600;}
+
+.card.locked .lock { animation: bob 1.2s ease-out infinite; text-align: center; line-height: 1.8; }
+
+.card.locked .lock small { display: block; font-size: 1rem; color: var(--muted); }
+
+.card.locked:hover { transform: none; border-color: var(--border); box-shadow: 0 8px 30px -12px rgba(0,0,0,.45); }
+
+/* Shown when there are no projects (yet) or they could not be loaded */
+.cards-empty {
+  grid-column: 1 / -1;
+  text-align: center; color: var(--muted);
+  padding: 40px 0; font-size: 1.5rem;
+}

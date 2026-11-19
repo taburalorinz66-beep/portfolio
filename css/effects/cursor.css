@@ -1,0 +1,30 @@
+/* ============================================================
+   css/effects/cursor.css
+   The custom pixel mouse cursor.
+   ============================================================ */
+
+html.has-cursor, html.has-cursor * { cursor: none !important; }
+
+#cursor { position: fixed; left: 0; top: 0; z-index: 9900; pointer-events: none; display: none; }
+
+html.has-cursor #cursor { display: block; }
+
+#cursor-dot {
+  position: absolute; left: -4px; top: -4px; width: 8px; height: 8px;
+  background: var(--a3); box-shadow: 0 0 10px var(--a3);
+}
+
+#cursor-ring {
+  position: absolute; left: -16px; top: -16px; width: 32px; height: 32px;
+  border: 1px solid var(--a1);
+  transition: width .18s ease-out, height .18s ease-out, left .18s ease-out, top .18s ease-out, background .18s, border-color .18s;
+}
+
+#cursor.hover #cursor-ring {
+  width: 52px; height: 52px; left: -26px; top: -26px;
+  background: rgba(25, 240, 160, .14);
+  border-color: var(--a3);
+  animation: spin 1.6s ease-out infinite;
+}
+
+#cursor.down #cursor-ring { width: 20px; height: 20px; left: -10px; top: -10px; }

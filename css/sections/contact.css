@@ -1,0 +1,24 @@
+/* ============================================================
+   css/sections/contact.css
+   Contact section layout and side boxes.
+   ============================================================ */
+
+.contact-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 40px; align-items: start; }
+
+.contact-text { color: var(--muted); margin-bottom: 22px; }
+
+.side { display: flex; flex-direction: column; gap: 26px; }
+
+.side h3 { font-family: var(--pixel); font-size: 1.27rem; color: var(--a1); margin-bottom: 14px; letter-spacing: .04em; font-weight: 600;}
+
+.link-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 16px; }
+
+.link-list a { display: inline-block; color: var(--text); transition: transform .12s ease-out, color .15s; }
+
+.link-list a::before { content: "▶ "; color: var(--a3); }
+
+.link-list a:hover { color: var(--a1); transform: translateX(6px); }
+
+.tip p { color: var(--muted); }
+
+kbd { font-family: var(--pixel); font-size: 0.975rem; padding: 4px 6px; border: 1px solid var(--border); background: var(--field); color: var(--a3); letter-spacing: .04em; font-weight: 600;}

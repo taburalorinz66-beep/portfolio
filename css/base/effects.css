@@ -1,0 +1,11 @@
+/* ============================================================
+   css/base/effects.css
+   CRT scanline overlay, theme fade, rainbow cheat mode.
+   ============================================================ */
+
+html.theme-anim *, html.theme-anim *::before, html.theme-anim *::after {
+  transition: background-color .6s, color .6s, border-color .6s, box-shadow .6s !important;
+}
+
+
+html.cheat { animation: hue 5s linear infinite; }

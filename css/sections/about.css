@@ -1,0 +1,73 @@
+/* ============================================================
+   css/sections/about.css
+   About Me: avatar, terminal, stats.
+   ============================================================ */
+
+.about-grid { display: grid; grid-template-columns: 240px 1fr; gap: 46px; align-items: start; }
+
+.avatar-wrap { text-align: center; }
+
+.avatar-frame {
+  position: relative;
+  width: 220px; height: 220px; margin: 0 auto;
+  background: linear-gradient(180deg, var(--panel2), var(--panel));
+  border: 1px solid var(--a3); padding: 14px;
+  box-shadow: 0 10px 40px -16px var(--a4), 0 0 28px color-mix(in srgb, var(--a3) 40%, transparent);
+  display: grid; place-items: center;
+  overflow: hidden;
+}
+
+.avatar-frame::after {
+  content: ""; position: absolute; left: 0; right: 0; height: 30%;
+  top: -30%;
+  background: linear-gradient(180deg, transparent, rgba(255,255,255,.14), transparent);
+  animation: scan 3.2s linear infinite;
+}
+
+#avatar { width: 176px; height: 176px; image-rendering: pixelated; animation: bob 1.1s ease-out infinite; }
+
+.avatar-frame img { width: 100%; height: 100%; object-fit: contain; animation: bob 1.4s ease-out infinite; }
+
+.avatar-tag { font-family: var(--pixel); font-size: 1.07rem; color: var(--a1); margin-top: 22px; letter-spacing: .04em; font-weight: 600;}
+
+.terminal { padding: 0; overflow: hidden; }
+
+.term-bar {
+  display: flex; align-items: center; gap: 8px;
+  padding: 10px 14px; background: var(--panel2);
+  border-bottom: 1px solid var(--border);
+  font-size: 1.1rem; color: var(--muted);
+}
+
+.term-bar i { width: 10px; height: 10px; background: var(--a1); }
+
+.term-bar i:nth-child(2) { background: var(--a3); }
+
+.term-bar i:nth-child(3) { background: var(--a2); }
+
+.term-bar span { margin-left: 10px; }
+
+.term-out {
+  font-family: var(--body); font-size: 1.45rem; color: var(--a3);
+  padding: 18px 20px; min-height: 12.5em; white-space: pre-wrap;
+}
+
+.term-out .cmd { color: var(--a1); }
+
+.term-out .caret { display: inline-block; width: .55em; height: 1em; background: var(--a3); vertical-align: -.15em; animation: blink 1s ease-out infinite; }
+
+.bio { margin: 26px 0 22px; color: var(--soft); font-size: 1.55rem; }
+
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 16px; }
+
+.stat {
+  background: var(--panel); border: 1px solid var(--border); padding: 14px 12px;
+  text-align: center;
+  transition: transform .15s ease-out, border-color .15s;
+}
+
+.stat:hover { transform: translateY(-5px); border-color: var(--a1); }
+
+.stat b { display: block; font-family: var(--pixel); font-weight: 400; font-size: 2.54rem; color: var(--a1); margin-bottom: 8px; letter-spacing: .04em;}
+
+.stat span { font-family: var(--pixel); font-size: 0.877rem; color: var(--muted); letter-spacing: .04em; font-weight: 600;}

@@ -1,0 +1,42 @@
+/* ============================================================
+   css/components/buttons.css
+   All buttons (.btn and friends).
+   ============================================================ */
+
+.btn {
+  position: relative; overflow: hidden;
+  display: inline-block;
+  padding: 15px 22px;
+  background: var(--a1); color: var(--btn-text);
+  border: 1px solid transparent;
+  box-shadow: 0 6px 20px -8px var(--a2);
+  font-family: var(--pixel); font-size: 1.27rem;
+  transition: transform .1s, box-shadow .1s, background .2s, color .2s; letter-spacing: .04em; font-weight: 600;}
+
+.btn::after {
+  content: ""; position: absolute; top: 0; bottom: 0; left: -60%; width: 40%;
+  background: rgba(255,255,255,.45);
+  transform: skewX(-25deg);
+  transition: left .45s ease-out;
+}
+
+.btn:hover::after { left: 130%; }
+
+.btn:hover { transform: translate(-2px, -2px); box-shadow: 0 8px 30px -12px var(--a2); }
+
+.btn:active { transform: translate(3px, 3px); box-shadow: 0 3px 5px -2px var(--a2); }
+
+.btn-outline { background: transparent; color: var(--a3); border-color: var(--a3); box-shadow: 0 6px 20px -8px var(--a4); }
+
+.btn-outline:hover { box-shadow: 0 8px 30px -12px var(--a4); background: rgba(34, 211, 238, .08); }
+
+.btn-ghost { background: var(--panel); color: var(--text); border-color: var(--border); box-shadow: 0 6px 20px -8px rgba(0,0,0,.5); }
+
+.btn.small { padding: 10px 14px; font-size: 1.07rem; }
+
+.btn[disabled] { opacity: .6; pointer-events: none; }
+
+/* Red button for dangerous actions (Delete) */
+.btn.danger { background: var(--bad); color: #fff; box-shadow: 0 8px 22px -10px var(--bad); }
+.btn.danger:hover { box-shadow: 0 10px 26px -8px var(--bad); }
+.btn.danger:active { box-shadow: 0 2px 8px -4px var(--bad); }

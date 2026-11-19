@@ -1,0 +1,52 @@
+/* ============================================================
+   css/base/animations.css
+   All @keyframes (blink, bob, glitch...). One place for every animation.
+   ============================================================ */
+
+@keyframes blink { 50% { opacity: 0; } }
+
+@keyframes pulse { 50% { opacity: .6; } }
+
+@keyframes bob { 50% { transform: translateY(-6px); } }
+
+@keyframes spin { to { transform: rotate(90deg); } }
+
+@keyframes hue { to { filter: hue-rotate(360deg); } }
+
+@keyframes marquee { to { transform: translateX(-50%); } }
+
+@keyframes introIn { from { opacity: 0; transform: translateY(26px) scale(.97); } to { opacity: 1; transform: none; } }
+
+@keyframes scan { to { top: 130%; } }
+
+@keyframes scrollDot { 0% { transform: translateY(0); opacity: 1; } 100% { transform: translateY(12px); opacity: 0; } }
+
+@keyframes cardIn { from { opacity: 0; transform: translateY(40px) scale(.9); } to { opacity: 1; } }
+
+@keyframes cardOut { to { opacity: 0; transform: scale(.7) rotate(4deg); } }
+
+@keyframes toastIn { from { opacity: 0; transform: translateX(60px); } to { opacity: 1; transform: none; } }
+
+@keyframes toastOut { to { opacity: 0; transform: translateX(60px); } }
+
+@keyframes shake { 25% { transform: translateX(-6px); } 75% { transform: translateX(6px); } }
+
+@keyframes dots { 0% { content: ""; } 25% { content: "."; } 50% { content: ".."; } 75% { content: "..."; } }
+
+@keyframes levelPulse { 0%, 100% { transform: none; } 30% { transform: scale(1.18); border-color: var(--a1); } }
+
+@keyframes glitchA {
+  0%, 88%, 100% { clip-path: inset(0 0 100% 0); transform: translate(0); }
+  89% { clip-path: inset(10% 0 62% 0); transform: translate(-5px, 0); }
+  91% { clip-path: inset(58% 0 14% 0); transform: translate(5px, 0); }
+  93% { clip-path: inset(32% 0 40% 0); transform: translate(-3px, 0); }
+  95% { clip-path: inset(0 0 100% 0); }
+}
+
+@keyframes glitchB {
+  0%, 88%, 100% { clip-path: inset(0 0 100% 0); transform: translate(0); }
+  90% { clip-path: inset(44% 0 30% 0); transform: translate(5px, 0); }
+  92% { clip-path: inset(70% 0 4% 0); transform: translate(-5px, 0); }
+  94% { clip-path: inset(6% 0 70% 0); transform: translate(3px, 0); }
+  96% { clip-path: inset(0 0 100% 0); }
+}

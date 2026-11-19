@@ -1,0 +1,8 @@
+/* ============================================================
+   css/components/tags.css
+   Small tag chips.
+   ============================================================ */
+
+.tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+
+.tags span { font-size: 1.1rem; padding: 0 8px; background: var(--field); border: 1px solid var(--a4); color: var(--a3); }

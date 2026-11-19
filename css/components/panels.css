@@ -1,0 +1,11 @@
+/* ============================================================
+   css/components/panels.css
+   The bordered box (.panel).
+   ============================================================ */
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  box-shadow: 0 8px 30px -12px rgba(0,0,0,.45);
+  padding: 22px;
+}

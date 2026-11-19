@@ -1,0 +1,105 @@
+/* ============================================================
+   css/layout/hero.css
+   The first screen: name, buttons, soft glow background.
+   ============================================================ */
+
+.hero {
+  position: relative;
+  min-height: 100vh; min-height: 100svh;
+  display: flex; align-items: center;
+  padding: calc(var(--hdr) + 40px) 6% 90px;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.hero-shade {
+  position: absolute; inset: 0; z-index: -1;
+  background:
+    linear-gradient(90deg, rgba(var(--shade), .86) 0%, rgba(var(--shade), .55) 40%, rgba(var(--shade), 0) 70%),
+    linear-gradient(180deg, rgba(var(--shade), .35) 0%, transparent 25%, transparent 75%, var(--bg) 100%);
+}
+
+.hero-content { position: relative; max-width: 720px; will-change: transform, opacity; }
+
+.intro { opacity: 0; }
+
+html:not(.js) .intro { opacity: 1; }
+
+body.ready .intro {
+  animation: introIn .8s ease-out both;
+  animation-delay: calc(var(--d, 0) * .14s + .25s);
+}
+
+.hero-hi {
+  font-family: var(--pixel); font-size: 1.46rem; color: var(--a1);
+  margin-bottom: 18px;
+  text-shadow: 0 0 12px var(--a1); letter-spacing: .04em; font-weight: 600;}
+
+.hero h1 {
+  font-family: var(--pixel);
+  font-size: clamp(3.12rem, 10.5vw, 6.63rem);
+  line-height: 1.3;
+  color: var(--text);
+  text-shadow: 0 6px 20px -8px var(--a2), 0 10px 40px -16px rgba(59, 130, 246, .45); letter-spacing: .04em; font-weight: 600;}
+
+.hero-role {
+  font-family: var(--body); font-weight: 400;
+  font-size: clamp(1.7rem, 4vw, 2.5rem);
+  color: var(--a3);
+  margin: 18px 0 8px;
+  min-height: 1.3em;
+}
+
+.cursor { animation: blink 1s ease-out infinite; }
+
+.hero-text { max-width: 540px; color: var(--soft); font-size: 1.6rem; margin: 8px 0 28px; }
+
+.hero-buttons { display: flex; flex-wrap: wrap; gap: 18px; }
+
+.socials { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 26px; }
+
+.socials a {
+  font-family: var(--pixel); font-size: 0.975rem;
+  padding: 9px 11px;
+  border: 1px solid var(--border); background: var(--panel);
+  color: var(--muted);
+  transition: transform .12s ease-out, color .15s, border-color .15s; letter-spacing: .04em; font-weight: 600;}
+
+.socials a:hover { color: var(--a1); border-color: var(--a1); transform: translateY(-3px); }
+
+.glitch { position: relative; }
+
+.glitch::before, .glitch::after {
+  content: attr(data-text);
+  position: absolute; left: 0; top: 0; width: 100%;
+  overflow: hidden; pointer-events: none;
+  clip-path: inset(0 0 100% 0);
+  text-shadow: none;
+}
+
+.glitch::before { color: var(--a3); animation: glitchA 5s infinite ease-out; }
+
+.glitch::after { color: var(--a1); animation: glitchB 5s infinite ease-out .15s; }
+
+.glitch:hover::before { animation-duration: .6s; }
+
+.glitch:hover::after { animation-duration: .6s; }
+
+.scroll-hint {
+  position: absolute; left: 50%; bottom: 24px; transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 10px;
+  font-family: var(--pixel); font-size: 0.975rem; color: var(--muted);
+  opacity: 0; transition: opacity .5s 2s; letter-spacing: .04em; font-weight: 600;}
+
+body.ready .scroll-hint { opacity: 1; }
+
+.scroll-hint i {
+  width: 18px; height: 28px; border: 1px solid var(--muted);
+  position: relative;
+}
+
+.scroll-hint i::after {
+  content: ""; position: absolute; left: 50%; top: 4px; width: 4px; height: 6px; margin-left: -2px;
+  background: var(--a1);
+  animation: scrollDot 1.4s ease-out infinite;
+}

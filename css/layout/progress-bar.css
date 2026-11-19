@@ -1,0 +1,12 @@
+/* ============================================================
+   css/layout/progress-bar.css
+   Thin scroll progress bar at the very top.
+   ============================================================ */
+
+#progress { position: fixed; top: 0; left: 0; right: 0; height: 4px; z-index: 200; background: transparent; }
+
+#progress span {
+  display: block; height: 100%; width: 0%;
+  background: linear-gradient(90deg, var(--a3), var(--a1), var(--a2));
+  box-shadow: 0 0 10px var(--a1);
+}

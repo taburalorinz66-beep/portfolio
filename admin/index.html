@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="night">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex" />
+  <title>Admin | Lorinz G. Tabura</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/main.css" />
+  <link rel="stylesheet" href="admin.css" />
+</head>
+<body class="admin">
+  <main class="wrap">
+
+    <!-- ============ LOGIN GATE ============ -->
+    <section id="gate" class="panel gate">
+      <h1 class="adm-title">ADMIN LOGIN</h1>
+      <p id="gate-msg" class="note">Checking login...</p>
+
+      <form id="login-form" class="form" novalidate hidden>
+        <label class="field"><span>EMAIL</span><input type="email" id="login-email" autocomplete="username" required /></label>
+        <label class="field"><span>PASSWORD</span><input type="password" id="login-pass" autocomplete="current-password" required /></label>
+        <button type="submit" class="btn" id="login-btn"><span>LOGIN</span></button>
+      </form>
+
+      <div class="adm-actions">
+        <a href="../index.html" class="btn btn-outline small">BACK TO SITE</a>
+        <button type="button" class="btn btn-ghost small" id="signout-user" hidden>SIGN OUT</button>
+      </div>
+    </section>
+
+    <!-- ============ ADMIN PANEL (after login) ============ -->
+    <section id="panel" hidden>
+      <header class="adm-top">
+        <h1 class="adm-title">ADMIN PANEL</h1>
+        <div class="adm-actions">
+          <span class="who" id="who"></span>
+          <a href="../index.html" class="btn btn-outline small">VIEW SITE</a>
+          <button type="button" class="btn btn-ghost small" id="logout-btn">LOGOUT</button>
+        </div>
+      </header>
+
+      <nav class="adm-tabs" id="adm-tabs" aria-label="Admin sections">
+        <button class="filter active" data-tab="messages">MESSAGE LOGS <b id="new-count">0</b></button>
+        <button class="filter" data-tab="files">ADD FILES</button>
+        <button class="filter" data-tab="link">ADD LINK</button>
+        <button class="filter" data-tab="cv">ADD CV</button>
+        <button class="filter" data-tab="projects">VIEW PROJECTS</button>
+      </nav>
+
+      <!-- Message logs: view, then Reply or Ignore -->
+      <section id="tab-messages" class="adm-tab panel">
+        <h2>MESSAGE LOGS</h2>
+        <p class="note">Messages visitors sent from the site. REPLY opens Gmail with your answer ready. IGNORE hides it from NEW.</p>
+        <div class="filters" id="msg-filters">
+          <button class="filter active" data-mf="all">ALL</button>
+          <button class="filter" data-mf="new">NEW</button>
+          <button class="filter" data-mf="replied">REPLIED</button>
+          <button class="filter" data-mf="ignored">IGNORED</button>
+        </div>
+        <div id="msg-list" class="adm-list"></div>
+      </section>
+
+      <!-- Add files: browse device, pick file(s) or a folder, publish -->
+      <section id="tab-files" class="adm-tab panel" hidden>
+        <h2>ADD FILES</h2>
+        <p class="note">Pick a file, several files, or a whole folder. Several files or a folder are zipped into ONE download. Max 50 MB.</p>
+        <form id="af-form" class="form" novalidate>
+          <label class="field"><span>WHERE SHOULD IT APPEAR?</span>
+            <select id="af-category"><option value="game">Games</option><option value="website">Websites</option></select>
+          </label>
+          <label class="field"><span>TITLE</span><input type="text" id="af-title" maxlength="120" required /></label>
+          <label class="field"><span>DESCRIPTION (OPTIONAL)</span><textarea id="af-desc" rows="3" maxlength="600"></textarea></label>
+          <div class="pick-row">
+            <label class="btn btn-outline small pick">BROWSE FILE(S)<input type="file" id="af-files" multiple hidden /></label>
+            <label class="btn btn-outline small pick">BROWSE FOLDER<input type="file" id="af-folder" webkitdirectory hidden /></label>
+          </div>
+          <p class="picked" id="af-picked">Nothing selected yet.</p>
+          <button type="submit" class="btn" id="af-btn"><span>PUBLISH</span></button>
+          <p class="form-status" id="af-status" role="status"></p>
+        </form>
+      </section>
+
+      <!-- Add link: type a web address, publish -->
+      <section id="tab-link" class="adm-tab panel" hidden>
+        <h2>ADD LINK</h2>
+        <p class="note">For a game on itch.io, a website on GitHub Pages, a video... anything with a web address.</p>
+        <form id="al-form" class="form" novalidate>
+          <label class="field"><span>WHERE SHOULD IT APPEAR?</span>
+            <select id="al-category"><option value="game">Games</option><option value="website">Websites</option></select>
+          </label>
+          <label class="field"><span>TITLE</span><input type="text" id="al-title" maxlength="120" required /></label>
+          <label class="field"><span>LINK (starts with https://)</span><input type="url" id="al-url" placeholder="https://" required /></label>
+          <label class="field"><span>DESCRIPTION (OPTIONAL)</span><textarea id="al-desc" rows="3" maxlength="600"></textarea></label>
+          <button type="submit" class="btn" id="al-btn"><span>PUBLISH LINK</span></button>
+          <p class="form-status" id="al-status" role="status"></p>
+        </form>
+      </section>
+
+      <!-- Add CV: browse, select, publish (replaces the old CV) -->
+      <section id="tab-cv" class="adm-tab panel" hidden>
+        <h2>ADD CV</h2>
+        <p class="note" id="cv-current">Checking current CV...</p>
+        <form id="ac-form" class="form" novalidate>
+          <div class="pick-row">
+            <label class="btn btn-outline small pick">BROWSE FILE<input type="file" id="ac-file" accept=".pdf,.doc,.docx" hidden /></label>
+          </div>
+          <p class="picked" id="ac-picked">Nothing selected yet.</p>
+          <button type="submit" class="btn" id="ac-btn"><span>PUBLISH CV</span></button>
+          <p class="form-status" id="ac-status" role="status"></p>
+        </form>
+      </section>
+
+      <!-- View projects: click one, then Delete / Replace / Cancel -->
+      <section id="tab-projects" class="adm-tab panel" hidden>
+        <h2>VIEW PROJECTS</h2>
+        <p class="note">Click a project to DELETE it, REPLACE its file or link, or CANCEL.</p>
+        <div class="adm-cols">
+          <div><h3 class="col-title">GAMES</h3><div id="pj-games" class="adm-list"></div></div>
+          <div><h3 class="col-title">WEBSITES</h3><div id="pj-websites" class="adm-list"></div></div>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <div id="toasts" aria-live="polite"></div>
+
+  <!-- Libraries (from the internet) -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.118.0/dist/umd/supabase.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
+
+  <!-- Shared with the main site -->
+  <script src="../js/config.js"></script>
+  <script src="../js/core/helpers.js"></script>
+  <script src="../js/core/toast.js"></script>
+  <script src="../js/core/dialog.js"></script>
+  <script src="../js/services/backend.js"></script>
+  <script src="../js/services/auth.js"></script>
+  <script src="../js/services/items.js"></script>
+  <script src="../js/services/messages.js"></script>
+
+  <!-- Admin only: one file per tab -->
+  <script src="js/admin-tabs.js"></script>
+  <script src="js/admin-messages.js"></script>
+  <script src="js/admin-add-files.js"></script>
+  <script src="js/admin-add-link.js"></script>
+  <script src="js/admin-add-cv.js"></script>
+  <script src="js/admin-projects.js"></script>
+  <script src="js/admin-main.js"></script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+/* ============================================================
+   css/base/variables.css
+   ALL the colors and fonts live here. Change one, it changes everywhere.
+   Theme: ESPORTS CLEAN. Two looks: NIGHT (default) and DAY.
+   The page switches look by changing  <html data-theme="night|day">.
+   ============================================================ */
+
+:root {
+  --pixel: "Chakra Petch", "Segoe UI", sans-serif;   /* headings, buttons, labels */
+  --body: "Inter", "Segoe UI", sans-serif;           /* paragraphs */
+  --hdr: 64px;
+}
+
+/* ---------- NIGHT ----------
+   .force-night keeps a small part of the page night-colored even in
+   Day mode (the start screen and the arcade screen need dark colors). */
+html[data-theme="night"],
+.force-night {
+  --bg: #07080c;
+  --bg2: #0a0c12;
+  --panel: #0e1119;
+  --panel2: #141824;
+  --text: #eef1f7;
+  --muted: #8b93a8;
+  --soft: #c2c8d8;          /* softer paragraph text */
+  --a1: #19f0a0;            /* neon mint (main accent) */
+  --a2: #7c5cff;            /* violet */
+  --a3: #22d3ee;            /* cyan   */
+  --a4: #3b82f6;            /* blue   */
+  --border: #1f2535;
+  --ink: #04130d;           /* very dark, used for outlines */
+  --btn-text: #04130d;      /* text color on mint buttons */
+  --field: #0a0d14;         /* input boxes, bars */
+  --header-bg: rgba(7, 8, 12, .85);
+  --shade: 7, 8, 12;        /* dark fade (r, g, b) */
+  --crt: 0;
+  --bad: #ff4d6a;           /* errors */
+  --bad-text: #ff7a8f;
+  --bad-shadow: #7a1f33;
+}
+
+/* ---------- DAY ---------- */
+html[data-theme="day"] {
+  --bg: #f3f5fa;
+  --bg2: #eaeef6;
+  --panel: #ffffff;
+  --panel2: #f1f4fb;
+  --text: #11141d;
+  --muted: #5b6377;
+  --soft: #2c3447;
+  --a1: #00a872;
+  --a2: #5b3df0;
+  --a3: #0891b2;
+  --a4: #2563eb;
+  --border: #d5dbe8;
+  --ink: #11141d;
+  --btn-text: #ffffff;
+  --field: #f6f8fc;
+  --header-bg: rgba(255, 255, 255, .88);
+  --shade: 243, 245, 250;
+  --crt: 0;
+  --bad: #d6284f;
+  --bad-text: #c4264a;
+  --bad-shadow: #f0b4c2;
+}

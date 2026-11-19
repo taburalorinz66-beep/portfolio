@@ -1,0 +1,60 @@
+/* ============================================================
+   css/sections/arcade.css
+   The arcade cabinet and game screen.
+   ============================================================ */
+
+.cabinet {
+  max-width: 760px; margin: 0 auto;
+  background: linear-gradient(180deg, var(--panel2), var(--panel));
+  border: 1px solid var(--border);
+  box-shadow: 0 12px 50px -20px rgba(0,0,0,.5), 0 0 40px color-mix(in srgb, var(--a2) 35%, transparent);
+  padding: 18px;
+}
+
+.hud-bar {
+  display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px;
+  font-family: var(--pixel); font-size: 1.07rem; color: var(--muted);
+  margin-bottom: 14px; letter-spacing: .04em; font-weight: 600;}
+
+.hud-bar b { color: var(--a3); font-weight: 400; }
+
+.lives { color: var(--a1); letter-spacing: 3px; }
+
+.screen { position: relative; border: 1px solid var(--border); background: #07061a; aspect-ratio: 16 / 9; }
+
+#game { width: 100%; height: 100%; display: block; image-rendering: pixelated; touch-action: none; outline: none; }
+
+.overlay {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px;
+  text-align: center; padding: 16px;
+  background: rgba(7, 6, 26, .72);
+  transition: opacity .3s ease-out;
+}
+
+.overlay.hide { opacity: 0; pointer-events: none; }
+
+.g-title { font-family: var(--pixel); font-size: clamp(1.75rem, 5.85vw, 2.92rem); color: var(--a1); text-shadow: 0 5px 15px -6px var(--a2); letter-spacing: .04em; font-weight: 600;}
+
+.g-msg { font-size: 1.4rem; color: var(--text); max-width: 420px; }
+
+.c-pink { color: var(--a1); }
+
+.c-gold { color: #ffd966; }
+
+.c-red { color: var(--bad); }
+
+.pad { display: flex; justify-content: center; gap: 12px; margin-top: 14px; }
+
+.pad-btn {
+  font-family: var(--pixel); font-size: 1.36rem;
+  padding: 14px 20px; min-width: 70px;
+  background: var(--panel); border: 1px solid var(--border);
+  box-shadow: 0 6px 20px -8px rgba(0,0,0,.5);
+  user-select: none; -webkit-user-select: none; touch-action: manipulation; letter-spacing: .04em; font-weight: 600;}
+
+.pad-btn.wide { font-size: 1.07rem; }
+
+.pad-btn:active, .pad-btn.held { transform: translate(3px, 3px); box-shadow: 0 3px 5px -2px rgba(0,0,0,.5); border-color: var(--a1); }
+
+.hint { text-align: center; color: var(--muted); font-size: 1.15rem; margin-top: 12px; }

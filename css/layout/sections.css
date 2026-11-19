@@ -1,0 +1,44 @@
+/* ============================================================
+   css/layout/sections.css
+   Shared spacing, section titles and scroll-in animations.
+   ============================================================ */
+
+main { overflow-x: clip; }
+
+.section { position: relative; max-width: 1160px; margin: 0 auto; padding: 100px 6% 70px; }
+
+.section-title {
+  position: relative;
+  font-family: var(--pixel); font-size: clamp(1.95rem, 5.85vw, 2.63rem);
+  color: var(--a1);
+  margin-bottom: 40px;
+  
+  display: inline-block; letter-spacing: .04em; font-weight: 600;}
+
+.section-title::before { content: "> "; color: var(--a3); }
+
+.section-title::after {
+  content: ""; position: absolute; left: 0; bottom: -14px; height: 3px; width: 0;
+  background: linear-gradient(90deg, var(--a1), var(--a2));
+  transition: width 1s ease-out .2s;
+}
+
+.section-title.visible::after { width: 100%; }
+
+.lead { color: var(--muted); margin: -8px 0 34px; font-size: 1.5rem; max-width: 640px; }
+
+html.js .reveal {
+  opacity: 0;
+  transition: opacity .7s ease-out, transform .7s ease-out;
+  transition-delay: calc(var(--i, 0) * .09s);
+}
+
+html.js .reveal[data-r="up"] { transform: translateY(40px); }
+
+html.js .reveal[data-r="left"] { transform: translateX(-60px); }
+
+html.js .reveal[data-r="right"] { transform: translateX(60px); }
+
+html.js .reveal[data-r="zoom"] { transform: scale(.88); }
+
+html.js .reveal.visible { opacity: 1; transform: none; }

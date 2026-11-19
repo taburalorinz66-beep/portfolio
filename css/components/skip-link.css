@@ -1,0 +1,12 @@
+/* ============================================================
+   css/components/skip-link.css
+   Hidden "Skip to content" link for keyboard users.
+   ============================================================ */
+
+.skip {
+  position: fixed; left: 12px; top: -60px; z-index: 10000;
+  background: var(--a1); color: var(--btn-text); padding: 10px 14px;
+  font-family: var(--pixel); font-size: 1.17rem;
+  transition: top .2s; letter-spacing: .04em; font-weight: 600;}
+
+.skip:focus { top: 12px; }

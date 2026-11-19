@@ -1,0 +1,32 @@
+/* ============================================================
+   css/sections/skills.css
+   Skill bars.
+   ============================================================ */
+
+.skill-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 28px 44px; }
+
+.skill { transition: transform .15s ease-out; }
+
+.skill:hover { transform: translateX(6px); }
+
+.skill-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 10px; }
+
+.skill-name { font-family: var(--pixel); font-size: 1.17rem; letter-spacing: .04em; font-weight: 600;}
+
+.skill-lv { font-family: var(--pixel); font-size: 0.975rem; color: var(--a3); letter-spacing: .04em; font-weight: 600;}
+
+.skill-bar { height: 24px; background: var(--field); border: 1px solid var(--border); padding: 2px; position: relative; overflow: hidden; }
+
+.skill-fill {
+  height: 100%; width: 0;
+  background: repeating-linear-gradient(90deg, var(--c, var(--a3)) 0 12px, transparent 12px 16px);
+  box-shadow: 0 0 10px var(--c, var(--a3));
+  transition: width 1.4s ease-out;
+  transition-delay: calc(var(--i, 0) * .1s + .2s);
+}
+
+.skill.visible .skill-fill { width: var(--lvl); }
+
+.skill-note { color: var(--muted); font-size: 1.15rem; margin-top: 8px; max-height: 0; opacity: 0; overflow: hidden; transition: max-height .3s ease-out, opacity .3s; }
+
+.skill:hover .skill-note { max-height: 3em; opacity: 1; }

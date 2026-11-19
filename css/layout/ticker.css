@@ -1,0 +1,22 @@
+/* ============================================================
+   css/layout/ticker.css
+   The pink scrolling banner under the hero.
+   ============================================================ */
+
+.ticker {
+  position: relative; z-index: 3;
+  overflow: hidden;
+  background: var(--a1); color: var(--btn-text);
+  border-block: 1px solid var(--ink);
+  transform: rotate(-1.2deg) scale(1.03);
+  margin: -14px 0 30px;
+  box-shadow: 0 8px 0 rgba(0,0,0,.35);
+}
+
+.ticker-track { display: flex; width: max-content; animation: marquee 34s linear infinite; }
+
+.ticker-track span {
+  font-family: var(--pixel); font-size: 1.36rem;
+  padding: 14px 22px; white-space: nowrap; letter-spacing: .04em; font-weight: 600;}
+
+.ticker:hover .ticker-track { animation-play-state: paused; }

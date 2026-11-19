@@ -1,0 +1,10 @@
+/* Floating ADMIN button (bottom-right) and its login message */
+.admin-fab {
+  position: fixed; right: 16px; bottom: 16px; z-index: 160;
+  padding: 11px 16px; font-family: var(--pixel); font-weight: 600; letter-spacing: .08em; font-size: 1rem;
+  background: var(--panel); color: var(--soft); border: 1px solid var(--border);
+  opacity: .75; transition: opacity .2s, border-color .2s, transform .2s;
+}
+.admin-fab:hover, .admin-fab:focus-visible { opacity: 1; border-color: var(--a1); color: var(--text); transform: translateY(-2px); }
+.admin-msg { min-height: 1.4em; color: var(--a1); margin: 8px 0 0; }
+.dlg-card input + input { margin-top: 10px; }

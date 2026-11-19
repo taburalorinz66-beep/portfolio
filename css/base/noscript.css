@@ -1,0 +1,6 @@
+/* ============================================================
+   css/base/noscript.css
+   Message shown when JavaScript is off.
+   ============================================================ */
+
+.noscript { position: fixed; inset: 0; z-index: 99999; display: grid; place-items: center; background: #07061a; color: #fff; font-family: var(--pixel); font-size: 1.56rem; padding: 20px; text-align: center; letter-spacing: .04em; font-weight: 600;}

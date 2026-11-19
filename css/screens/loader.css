@@ -1,0 +1,53 @@
+/* ============================================================
+   css/screens/loader.css
+   The boot screen (LORINZ.EXE) shown before the site.
+   ============================================================ */
+
+#loader {
+  position: fixed; inset: 0; z-index: 9500;
+  display: grid; place-items: center;
+  background: #07061a;
+  padding: 20px;
+}
+
+.loader-inner { width: min(560px, 100%); text-align: center; }
+
+#loader-sprite {
+  width: 150px; height: 150px; object-fit: contain;
+  image-rendering: auto;
+  animation: bob 0.8s ease-out infinite;
+  filter: drop-shadow(0 0 14px var(--a1));
+}
+
+.loader-title {
+  font-family: var(--pixel);
+  font-size: clamp(2.15rem, 7.8vw, 3.31rem);
+  color: var(--a1);
+  text-shadow: 0 5px 15px -6px var(--a2), 0 0 24px var(--a1);
+  margin: 18px 0; letter-spacing: .04em; font-weight: 600;}
+
+.boot-log {
+  font-family: var(--body);
+  font-size: 1.35rem;
+  color: var(--a3);
+  text-align: left;
+  min-height: 7.2em;
+  white-space: pre-wrap;
+}
+
+.load-bar { height: 26px; border: 1px solid var(--border); padding: 3px; background: var(--field); margin-top: 10px; }
+
+#load-fill {
+  height: 100%; width: 0%;
+  background: repeating-linear-gradient(90deg, var(--a1) 0 12px, transparent 12px 16px);
+  box-shadow: 0 0 12px var(--a1);
+}
+
+.load-pct { font-family: var(--pixel); font-size: 1.27rem; color: var(--muted); margin: 12px 0 18px; letter-spacing: .04em; font-weight: 600;}
+
+#start-btn { animation: pulse 1.2s ease-in-out infinite; }
+
+#start-btn:hover { animation: none; }
+
+
+

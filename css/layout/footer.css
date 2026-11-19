@@ -1,0 +1,19 @@
+/* ============================================================
+   css/layout/footer.css
+   Footer and the back-to-top button.
+   ============================================================ */
+
+.footer { position: relative; text-align: center; padding: 34px 20px 70px; color: var(--muted); border-top: 1px solid var(--border); background: var(--bg); z-index: 2; }
+
+.to-top {
+  position: fixed; right: 16px; bottom: 68px; z-index: 150;
+  width: 46px; height: 46px;
+  font-family: var(--pixel); font-size: 1.56rem; color: var(--btn-text);
+  background: var(--a1); border: 1px solid var(--ink); box-shadow: 0 6px 20px -8px var(--a2);
+  opacity: 0; transform: translateY(30px); pointer-events: none;
+  transition: opacity .3s, transform .3s ease-out; letter-spacing: .04em; font-weight: 600;}
+
+.to-top.show { opacity: 1; transform: none; pointer-events: auto; }
+
+.to-top:hover { transform: translateY(-4px); }
+
